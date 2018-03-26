@@ -2,11 +2,11 @@
     display: inline-block;
 
     &:block(radio-group):mod(size m) {
-        line-height: 24px;
+        line-height: $radio-group-size-m-lineHeight;
     }
 
     &:block(radio-group):mod(size l) {
-        line-height: 30px;
+        line-height: $radio-group-size-l-lineHeight;
     }
 
     &:block(radio-group):mod(type button) {

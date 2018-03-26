@@ -7,9 +7,9 @@
     animation-duration: 0.1s;
     animation-timing-function: ease-out;
 
-    background: #fff;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1),
-                0 10px 20px -5px rgba(0, 0, 0, 0.4);
+    background: $color-default;
+    box-shadow: $popup-boxShadow color($color-base a(10%)),
+                $popup-long-boxShadow color($color-base a(40%));
 
     animation-fill-mode: forwards;
 
@@ -37,7 +37,7 @@
 }
 
 @each $direction, $axis, $offset in
-(bottom, top, right, left),
+(button, top, right, left),
 (Y,      Y,   X,     X),
 (10,    -10,  10,   -10) {
     @keyframes popup_theme_islands_$(direction) {

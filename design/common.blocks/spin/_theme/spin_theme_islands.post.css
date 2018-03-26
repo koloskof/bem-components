@@ -1,4 +1,5 @@
 :block(spin):mod(theme islands) {
+
     position: absolute;
 
     display: inline-block;
@@ -6,8 +7,7 @@
 
     box-sizing: border-box;
 
-    $borderWidth: 2px;
-    border: $borderWidth solid transparent;
+    border: $spin-borderWidth solid transparent;
     border-radius: 50%;
 
     &:after {
@@ -24,23 +24,23 @@
         background: 0 0 no-repeat url(spin_theme_islands.gif);
 
         /* `1deg` is needed to prevent FF bug after minification (`0deg` => `0`) */
-        background: linear-gradient(1deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0));
+        background: linear-gradient(1deg, $color-default, $color-default);
 
         backface-visibility: hidden; /* Accelerate animation */
     }
 
-    $bgShift: -$borderWidth;
+    $bgShift: -($spin-borderWidth);
 
     @each $size, $val in
     (xs,   s,     m,     l,     xl),  /* size */
-    (16px, 24px,  28px,  32px,  38px) /* val */ {
+    ($size-list-xs, $size-list-s,  $size-list-m,  $size-list-l,  $size-list-xl) /* val */ {
         &:block(spin):mod(size $size) {
             line-height: $val;
 
             width: $val;
             height: $val;
 
-            background-position: -$(borderWidth) $bgShift;
+            background-position: -($spin-borderWidth) $bgShift;
         }
 
         $bgShift: calc($bgShift - ($val + 1));
@@ -49,13 +49,13 @@
 
 @keyframes spin_theme_islands {
     from {
-        border-top-color: #fc0;
-        border-left-color: #fc0;
+        border-top-color: $color-border-focus;
+        border-left-color: $color-border-focus;
         transform: rotate(0);
     }
     to {
-        border-top-color: #fc0;
-        border-left-color: #fc0;
+        border-top-color: $color-border-focus;
+        border-left-color: $color-border-focus;
         transform: rotate(360deg);
     }
 }

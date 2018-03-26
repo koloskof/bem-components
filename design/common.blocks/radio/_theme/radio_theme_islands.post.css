@@ -1,7 +1,7 @@
 :block(radio):mod(theme islands) {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: $radio-fontFamily;
 
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: $color-border;
 
     &:hover {
         cursor: pointer;
@@ -21,80 +21,80 @@
 
         display: inline-block;
 
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.2);
+        border-radius: $radio-borderRadius;
+        background: $color-border;
 
         &:before {
             position: absolute;
-            top: 1px;
-            right: 1px;
-            bottom: 1px;
-            left: 1px;
+            top: $radio-before-space;
+            right: $radio-before-space;
+            bottom: $radio-before-space;
+            left: $radio-before-space;
 
             content: '';
 
-            border-radius: 50%;
-            background: #fff;
+            border-radius: $radio-before-borderRadius;
+            background: $color-default;
         }
     }
 
     &:block(radio):mod(size m) {
-        font-size: 13px;
+        font-size: $radio-size-m-fontSize;
 
         :block(radio):elem(box) {
-            line-height: 14px;
+            line-height: $radio-size-m-lineHeight;
 
-            top: 2px;
+            top: $radio-size-m-top;
 
-            width: 14px;
-            height: 14px;
-            margin-right: 5px;
+            width: $radio-size-m-width;
+            height: $radio-size-m-height;
+            margin-right: $radio-size-m-marginRight;
 
             &:after {
-                top: 4px;
-                left: 4px;
+                top: $radio-size-m-after;
+                left: $radio-size-m-after;
 
-                width: 6px;
-                height: 6px;
+                width: $radio-width-m-after;
+                height: $radio-height-m-after;
             }
         }
     }
 
     &:block(radio):mod(size l) {
-        font-size: 15px;
+        font-size: $radio-size-l-fontSize;
 
         :block(radio):elem(box) {
-            line-height: 17px;
+            line-height: $radio-size-l-lineHeight;
 
-            top: 3px;
+            top: $radio-size-l-top;
 
-            width: 17px;
-            height: 17px;
-            margin-right: 7px;
+            width: $radio-size-l-width;
+            height: $radio-size-l-height;
+            margin-right: $radio-size-l-marginRight;
 
             &:after {
-                top: 5px;
-                left: 5px;
+                top: $radio-size-l-after;
+                left: $radio-size-l-after;
 
-                width: 7px;
-                height: 7px;
+                width: $radio-width-l-after;
+                height: $radio-height-l-after;
             }
         }
     }
 
     &:block(radio):mod(checked) {
         :block(radio):elem(box) {
-            background: rgba(153, 122, 0, 0.5);
+            background: $color-border-check;
 
             &:before {
-                background: #ffeba0;
+                background: $color-check;
             }
 
             &:after {
                 position: absolute;
 
-                border-radius: 50%;
-                background: #000;
+                border-radius: $radio-checked-after-borderRadius;
+                background: $radio-dot-background;
 
                 content: '';
             }
@@ -103,30 +103,30 @@
 
     &:block(radio):mod(focused) {
         :block(radio):elem(box):before {
-            box-shadow: 0 0 0 1px #ffcc00, inset 0 0 0 1px #ffcc00;
+            box-shadow: $radio-focused-boxShadow $color-border-focus, inset $radio-focused-inset-boxShadow $color-border-focus;
         }
     }
 
     &:block(radio):mod(hovered) {
         :block(radio):elem(box) {
-           background: rgba(0, 0, 0, 0.3);
+           background: $color-border-hover;
         }
 
         &:block(radio):mod(checked) :block(radio):elem(box) {
-           background: rgba(129, 103, 0, 0.6);
+           background: $color-border-check-hover;
         }
     }
 
     &:block(radio):mod(disabled) {
         cursor: default;
 
-        color: #999;
+        color: $color-typo-disable;
 
         :block(radio):elem(box) {
-            background: rgba(0, 0, 0, 0.08);
+            background: $color-disable;
 
-            :block(radio):mod(checked)& {
-                background: rgba(0, 0, 0, 0.15);
+            :block(radio):mod(checked) {
+                background: $color-disable-check;
             }
 
             &:before {
@@ -134,7 +134,7 @@
             }
 
             &:after {
-                background: rgba(0, 0, 0, 0.4);
+                background: $color-typo-inverse-disable;
             }
         }
     }
@@ -145,15 +145,15 @@
 
     &:block(radio):mod(type line) {
         &:block(radio):mod(size m) {
-            margin-right: 13px;
+            margin-right: $radio-line-size-m-marginRight;
         }
 
         &:block(radio):mod(size l) {
-            margin-right: 15px;
+            margin-right: $radio-line-size-l-marginRight;
         }
 
         &:last-child {
-            margin-right: 0;
+            margin-right: $radio-line-last-child-marginRight;
         }
     }
 }

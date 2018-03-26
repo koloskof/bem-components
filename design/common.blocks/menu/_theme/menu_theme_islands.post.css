@@ -6,9 +6,9 @@
     user-select: none;
 
     outline: 0;
-    background: #fff;
+    background: $menu-background;
 
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: $menu-background;
 
     /* Using pseudo-elements intead of paddings because of Firefox bug with bottom padding (#1158):
      * https://bugzilla.mozilla.org/show_bug.cgi?id=748518 */
@@ -21,10 +21,10 @@
 
     @each $size, $fontSize, $lineHeight, $paddingVert, $paddingHor in
     (s,    m,    l,    xl),
-    (13px, 13px, 15px, 15px),  /* fontSize */
-    (24px, 24px, 28px, 32px,), /* lineHeight */
-    (3px,  4px,  5px,  6px),   /* paddingVer */
-    (10px, 13px, 15px, 20px)   /* paddingHor */ {
+    ($menu-size-s-fontSize, $menu-size-m-fontSize, $menu-size-l-fontSize, $menu-size-xl-fontSize),  /* fontSize */
+    ($menu-size-s-lineHeight, $menu-size-m-lineHeight, $menu-size-l-lineHeight, $menu-size-xl-lineHeight), /* lineHeight */
+    ($menu-size-s-vertSpace,  $menu-size-m-vertSpace,  $menu-size-l-vertSpace,  $menu-size-xl-vertSpace),   /* paddingVer */
+    ($menu-size-s-horSpace, $menu-size-m-horSpace, $menu-size-l-horSpace, $menu-size-xl-horSpace)   /* paddingHor */ {
         &:block(menu):mod(size $size) {
             font-size: $fontSize;
             line-height: $lineHeight;
@@ -34,7 +34,7 @@
                 height: $paddingVert;
             }
 
-            :block(menu):elem(item) + :block(menu):elem(group) {
+            :block(menu-item) + :block(menu):elem(group) {
                 margin-top: $paddingVert;
             }
 
@@ -49,11 +49,12 @@
     }
 
     :block(menu):elem(group) {
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        border: $menu-group-borderWidth solid  $color-border;
         border-width: 1px 0;
 
         &-title {
-            color: #999;
+            color: $color-typo-primary;
+
         }
 
         & + :block(menu):elem(group) {
